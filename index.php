@@ -10,6 +10,12 @@
     <title>ShopMarket</title>
 </head>
 <body>
-    <?php require_once "helper/navbar.php" ?>
+    <!-- Navigation Bar -->
+
+    <?php $selected="Home"; require_once "helper/navbar.php" ?>
+
+    <div class="wrapper">
+        
+    </div>
 </body>
 </html>

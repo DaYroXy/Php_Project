@@ -52,3 +52,17 @@
     gap: 15px;    
 }
 
+
+.selected::after {
+    content: " ";
+    display: block;
+    background-color: red;
+    width: 50%;
+    margin: 2px auto;
+    height: 2px;
+    transition: 0.2s;
+}
+
+.selected:hover::after {
+    width: 100%;
+}
