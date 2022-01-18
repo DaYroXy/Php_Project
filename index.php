@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Styles/global.css">
     <link rel="stylesheet" href="Styles/index.css">
     <link rel="stylesheet" href="Styles/navbar.css">
+    <link rel="stylesheet" href="Styles/footer.css">
     <title>ShopMarket</title>
 </head>
 <body>
@@ -30,7 +31,9 @@
     </div>
 
     <div class="home-items-content">
-        
+
     </div>
+
+    <?php require_once "helper/footer.php" ?>
 </body>
 </html>
