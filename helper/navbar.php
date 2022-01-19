@@ -20,8 +20,8 @@
         <ul class="nav-links">
             <li><a <?php if($selected == "index")  { echo "class='selected'";} ?> href="../index.php">Home</a></li>
             <li><a <?php if($selected == "shop")  { echo "class='selected'";} ?> href="../shop.php">Shop</a></li>
-            <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="#">Cart</a><span>0</span></li>
-            <li><a <?php if($selected == "contact")  { echo "class='selected'";} ?> href="#">Contact</a></li>
+            <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="../cart.php">Cart</a><span>0</span></li>
+            <li><a <?php if($selected == "contact")  { echo "class='selected'";} ?> href="../contact.php">Contact</a></li>
         </ul>
     
         <div class="Avatar">

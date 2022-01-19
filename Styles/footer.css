@@ -45,3 +45,12 @@
     width: 80%;
     margin: auto;
 }
+
+@media only screen and (max-width: 500px) {
+    .main-footer-content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+
+    }
+}

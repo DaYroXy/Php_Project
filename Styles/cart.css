@@ -1,0 +1,144 @@
+
+.cart-wrapper {
+    width: 100%;
+    min-height: 600px;
+}
+
+
+.cart-content {
+    margin: 45px auto;
+    width: 85%;
+    height: auto;
+    display: grid;
+    gap: 45px;
+    grid-template-columns: 1.9fr 480px;
+}
+
+.checkout-list {
+    border: 1px solid #e1e1e1;
+    border-top: 3px solid #e1e1e1;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.inner-checkout-list {
+    width: 90%;
+    height: 95%;
+}
+
+.checkout-line{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.checkout-list form {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.checkout-list input[type="text"] {
+    padding: 10px;
+    margin: 25px auto;
+    width: 85%;
+    max-height: 450px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #a1a1a183;;
+}
+
+.checkout-list input[type="submit"] {
+    margin: auto;
+    color: #fff;
+    background: #33323A;
+    padding: 10px;
+    width: 180px;
+    border: none;
+    transition: 0.3s;
+}
+
+.checkout-list input[type="submit"]:hover {
+    cursor: pointer;
+    box-shadow: inset 0 0 50px 0 #4f5159;
+}
+
+
+
+
+/* Left Side */
+.products-list {
+    border: 1px solid #e1e1e1;
+    border-top: 3px solid #e1e1e1;;
+    min-height: 600px;
+}
+
+.products-list h2 {
+    font-size: 22px;
+    padding: 10px;
+    border-bottom:1px solid #e1e1e1;
+}
+
+.products-content {
+    margin: auto;
+    width: 95%;
+}
+
+.cart-item {
+    margin: 25px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+
+.cart-item img {
+    width: 150px;
+    height: 174px;
+    object-fit:cover;
+}
+
+.item-info {
+    position: relative;
+    max-width: 250px;
+}
+
+.item-info h4 {
+    position: absolute;
+    margin-top: 10px;
+}
+
+.item-quantity {
+    max-width: 250px;
+    min-width: 77px;
+}
+
+.item-quantity form input {
+    float: left;
+    text-align: center;
+    width: 25px;
+    font-size: 20px;
+    border: 1px solid #e1e1e1;
+    background: none;
+    outline: none;
+}
+
+.deleteItem input[type="submit"] {
+    background: url("../images/delete.png");
+    background-size: cover;
+    object-fit: cover;
+    border: none;
+    height: 20px;
+    width: 20px;
+}
+
+@media only screen and (max-width: 1160px) {
+    .cart-content {
+        grid-template-columns: 1.9fr;
+    }
+}
