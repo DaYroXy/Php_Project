@@ -1,0 +1,36 @@
+
+
+.category-nav{
+    background: #25272B;
+
+    margin: 45px auto;
+    width: 100%;
+}
+
+.category-nav ul {
+    padding: 5px 15px;
+    display: flex;
+    margin: auto;
+    width: 85%;
+    gap: 25px;
+}
+
+.category-nav ul a {
+    color: rgb(160, 156, 156);
+    transition: 0.3s;
+}
+
+.category-nav ul a:hover {
+    color: #fff;
+}
+
+.home-items-content {
+    margin-bottom: 35px;
+}
+
+.category-nav ul li,a {
+    color: #111;
+    text-decoration: none;
+    list-style-type: none;
+}
+
