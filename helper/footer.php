@@ -29,5 +29,7 @@
     </div>
 </div>
 
+<script src="../scripts/navbar.js"></script>
+
 </body>
 </html>

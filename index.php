@@ -40,6 +40,7 @@
             </div>
             <img src="images/products/GreenJacket.webp" alt="">
         </div>
+        
             
     </div>
 

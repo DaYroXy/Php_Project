@@ -23,6 +23,7 @@
                         <input type="submit" name="removeItem" value="">
                     </form>
                 </div>
+                
             </div>
         </div>
 

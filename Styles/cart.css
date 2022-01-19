@@ -142,3 +142,15 @@
         grid-template-columns: 1.9fr;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .cart-content {
+        grid-template-columns: 1fr;
+    }
+    .cart-item {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

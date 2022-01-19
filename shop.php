@@ -15,7 +15,6 @@
 
 <div class="home-items-content">
     <div class="items-list">
-
         <div class="card">
             <div class="product-info">
                 <div class="product-inner-info">
@@ -31,10 +30,7 @@
             </div>
             <img src="images/products/GreenJacket.webp" alt="">
         </div>
-        
     </div>
-    
-
 </div>
 
 <?php require_once "helper/footer.php" ?>
