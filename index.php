@@ -19,6 +19,95 @@
 
 <div class="home-items-content">
 
+    <div class="title">
+        <h1>Our most popular products</h1>
+    </div>
+
+    <div class="items-list">
+
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        <div class="card">
+            <div class="product-info">
+                <div class="product-inner-info">
+                    <h4>Green Jacket</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
+                    <div class="price-buy">
+                        <h2>$35</h2>
+                        <button>Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            <img src="images/products/GreenJacket.webp" alt="">
+        </div>
+        
+
+
+    </div>
+
 </div>
 
 
