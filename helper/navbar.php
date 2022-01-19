@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="Styles/<?php echo $selected ?>.css">
     <link rel="stylesheet" href="Styles/navbar.css">
     <link rel="stylesheet" href="Styles/footer.css">
-    <title>ShopMarket</title>
+    <link rel="shortcut icon" href="../images/ShopForceLogo.png" type="image/x-icon">
+    <title>ShopForce™</title>
 </head>
 <body>
 
@@ -17,10 +18,10 @@
         <a href="#"><img class="Logo" src="../images/ShopForce.png" alt="Logo"></a>
     
         <ul class="nav-links">
-            <li><a <?php if($selected == "index")  { echo "class='selected'";} ?> href="#">Home</a></li>
-            <li><a <?php if($selected == "Shop")  { echo "class='selected'";} ?> href="#">Shop</a></li>
-            <li><a <?php if($selected == "Cart")  { echo "class='selected'";} ?> href="#">Cart</a><span>0</span></li>
-            <li><a <?php if($selected == "Contact")  { echo "class='selected'";} ?> href="#">Contact</a></li>
+            <li><a <?php if($selected == "index")  { echo "class='selected'";} ?> href="../index.php">Home</a></li>
+            <li><a <?php if($selected == "shop")  { echo "class='selected'";} ?> href="../shop.php">Shop</a></li>
+            <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="#">Cart</a><span>0</span></li>
+            <li><a <?php if($selected == "contact")  { echo "class='selected'";} ?> href="#">Contact</a></li>
         </ul>
     
         <div class="Avatar">

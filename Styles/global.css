@@ -59,18 +59,51 @@
     justify-content: space-between;
 }
 
-.price-buy button {
+.price-buy form {
+    width: 85%;
+    text-align: right;
+}
+
+.price-buy input {
     color: #fff;
     background: #33323A;
     padding: 10px;
-    width: 80%;
+    width: 85%;
     border: none;
     border-radius: 15px;
     transition: 0.3s;
 }
 
 
-.price-buy button:hover {
+.price-buy input:hover {
     cursor: pointer;
     box-shadow: inset 0 0 50px 0 #4F5159;
+}
+
+.items-list {
+    margin: auto;
+    width: 85%;
+    display: grid;
+    justify-content: center;
+    gap: 25px;
+    grid-template-columns: repeat(4, 300px);
+}
+
+
+@media (max-width: 1331px) {
+    .items-list {
+        grid-template-columns: repeat(3, 300px);
+    }
+}  
+
+@media (max-width: 992px) {
+    .items-list {
+        grid-template-columns: repeat(2, 300px);
+    }
+}  
+
+@media (max-width: 650px) {
+    .items-list {
+        grid-template-columns: repeat(1, 300px);
+    }
 }

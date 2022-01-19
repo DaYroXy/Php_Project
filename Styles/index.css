@@ -78,10 +78,6 @@
     width: 60%;
 }
 
-
-
-
-
 .items-list {
     margin: auto;
     width: 85%;
@@ -99,22 +95,7 @@
     }
 }
 
-@media (max-width: 1331px) {
-    .items-list {
-        grid-template-columns: repeat(3, 300px);
-    }
-}  
-
-@media (max-width: 992px) {
-    .items-list {
-        grid-template-columns: repeat(2, 300px);
-    }
-}  
-
 @media (max-width: 650px) {
-    .items-list {
-        grid-template-columns: repeat(1, 300px);
-    }
     
     .welcome-content {
         top: 50px;
