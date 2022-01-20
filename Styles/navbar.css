@@ -114,15 +114,38 @@
     align-items: center;
     display: flex;
     background: #fff;
-    z-index: 2;
+    z-index: 5;
     right: 0;
     top: 76px;
     position: absolute;
     height: 400px;
-    width: 250px;
+    width: 0px;
+    overflow: hidden;
     flex-direction: column;
     gap: 45px;
+
+
 }
+
+@keyframes OpenTab {
+    from {
+       width: 0px;
+    }
+    to {
+        width: 250px;
+    }
+
+}
+
+@keyframes CloseTab {
+    from {
+       width: 250px;
+    }
+    to {
+        width: 0px;
+    }
+}
+
 
 
 .resNavLinks li, a {

@@ -22,17 +22,18 @@
             <li><a <?php if($selected == "shop")  { echo "class='selected'";} ?> href="../shop.php">Shop</a></li>
             <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="../cart.php">Cart</a><span>1</span></li>
             <li><a <?php if($selected == "contact")  { echo "class='selected'";} ?> href="../contact.php">Contact</a></li>
+            
             <li class="resp-col">
                 <div class="res-Avatar" id="resAvatar">
                     <img src="../images/defaultAvatar.png" class="Avatar-Logo" alt="Avatar-Logo">
-                    <a href="#">Log In</a>
+                    <a href="../login.php">Log In</a>
                 </div>
             </li>
         </ul>
     
         <div class="Avatar">
             <img src="../images/defaultAvatar.png" class="Avatar-Logo" alt="Avatar-Logo">
-            <a href="#">Log In</a>
+            <a href="../login.php">Log In</a>
         </div>
 
         <div class="menu-icon" id="hamburger">

@@ -4,19 +4,24 @@ var enabled = false
 let navLinks = document.getElementById("navLinks")
 let Avatar = document.getElementById("resAvatar")
 
+
 document.getElementById("hamburger").addEventListener('click', e => {
-
-
     if (!enabled) {
-        navLinks.classList.remove("nav-links")
         navLinks.classList.add("resNavLinks")
+        document.querySelector('.resNavLinks').style = "animation: 0.3s forwards OpenTab"
+        navLinks.classList.remove("nav-links")
         Avatar.style.display = "flex"
+
         enabled = true
     } else {
-        navLinks.classList.remove("resNavLinks")
-        navLinks.classList.add("nav-links")
-        Avatar.style.display = "none"
-        enabled = false
+        document.querySelector('.resNavLinks').style = "animation: 0.3s forwards CloseTab"    
+        setTimeout(() => {
+            document.querySelector('.resNavLinks').style = ""
+            navLinks.classList.remove("resNavLinks")
+            navLinks.classList.add("nav-links")
+            Avatar.style.display = "none"
+            enabled = false 
+        }, 400);
     }
 })
 
@@ -24,14 +29,14 @@ document.getElementById("hamburger").addEventListener('click', e => {
 window.addEventListener('click', function(e){   
     if(enabled) {
         if (!document.getElementById('navLinks').contains(e.target) && !document.getElementById('hamburger').contains(e.target)){
-            navLinks.classList.remove("resNavLinks")
-            navLinks.classList.add("nav-links")
-            Avatar.style.display = "none"
-            enabled = false
-    //         navLinks.classList.add("nav-links")
-    //         Avatar.style.display = "none"
-    //         enabled = false
-            console.log("Out");
+            document.querySelector('.resNavLinks').style = "animation: 0.3s forwards CloseTab"
+            setTimeout(() => {
+                document.querySelector('.resNavLinks').style = ""
+                navLinks.classList.remove("resNavLinks")
+                navLinks.classList.add("nav-links")
+                Avatar.style.display = "none"
+                enabled = false 
+            }, 400);
         }
     }
 });
