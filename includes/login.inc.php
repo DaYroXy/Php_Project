@@ -2,7 +2,7 @@
 <?php
 
 // Check if method is post and was clicked on register button
-if($_SERVER['REQUEST_METHOD'] != 'POST' || !$_POST["Login"]) {
+if($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST["Login"])) {
     die(header("location: ../login.php"));
 } 
 

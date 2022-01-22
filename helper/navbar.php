@@ -7,6 +7,7 @@
 
     if(isset($_SESSION["user"])) {
         $user = $_SESSION["user"];
+        $cart = $_SESSION["cart"];
     }
 
 ?>
@@ -33,7 +34,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a <?php if($selected == "index")  { echo "class='selected'";} ?> href="../index.php">Home</a></li>
             <li><a <?php if($selected == "shop")  { echo "class='selected'";} ?> href="../shop.php">Shop</a></li>
-            <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="../cart.php">Cart</a><span>1</span></li>
+            <li><a <?php if($selected == "cart")  { echo "class='selected'";} ?> href="../cart.php">Cart</a><span><?php if(isset($cart)) echo count($cart); else echo "0"; ?></span></li>
             <li><a <?php if($selected == "contact")  { echo "class='selected'";} ?> href="../contact.php">Contact</a></li>
             
             <li class="resp-col">

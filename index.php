@@ -27,22 +27,31 @@
 
     <div class="items-list">
 
-        <div class="card">
-            <div class="product-info">
-                <div class="product-inner-info">
-                    <h4>Green Jacket</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat </p>
-                    <div class="price-buy">
-                        <h2>$35</h2>
-                        <form action="#">
-                            <input type="submit" value="Add to cart"></input>
-                        </form>
+        <?php
+            $products = GetPopular($pdo);
+
+            foreach($products as &$product) { ?>
+            <div class="card">
+                <div class="product-info">
+                    <div class="product-inner-info">
+                        <h4><?php echo $product["name"]; ?></h4>
+                        <p><?php echo $product["description"]; ?></p>
+                        <div class="price-buy">
+                            <h2>$<?php echo $product["price"]; ?></h2>
+                            <?php if(isset($user)) {
+                                echo '<form action="includes/cart.inc.php" method="post">';
+                            } else {
+                                echo '<form action="login.php">';
+                            } ?>
+                                <input type="submit" name="AddToCart" value="Add to cart"></input>
+                                <input type="hidden" name="ProductId" value="<?php echo $product['id']; ?>"></input>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                <img src="images/products/<?php echo $product['image']; ?>" alt="">
             </div>
-            <img src="images/products/GreenJacket.webp" alt="">
-        </div>
-        
+        <?php } ?>
             
     </div>
 
