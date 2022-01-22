@@ -26,6 +26,7 @@
 
 .home-items-content {
     margin-bottom: 35px;
+    min-height: 400px;
 }
 
 .category-nav ul li,a {

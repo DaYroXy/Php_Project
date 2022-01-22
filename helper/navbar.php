@@ -1,3 +1,16 @@
+<?php
+
+    session_start();
+    // database connection
+    require_once "includes/db-connection.php";
+    require_once "includes/functions.inc.php";
+
+    if(isset($_SESSION["user"])) {
+        $user = $_SESSION["user"];
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +46,10 @@
     
         <div class="Avatar">
             <img src="../images/defaultAvatar.png" class="Avatar-Logo" alt="Avatar-Logo">
-            <a href="../login.php">Log In</a>
+            <?php
+                if(isset($user)) echo '<a href="../includes/logout.inc.php">Log Out</a>';
+                else echo '<a href="../login.php">Log In</a>';
+            ?>
         </div>
 
         <div class="menu-icon" id="hamburger">

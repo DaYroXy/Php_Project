@@ -6,7 +6,7 @@
     <div class="register-form">
         <h1>REGISTER</h1>
         
-        <form action="#" autocomplete="false">
+        <form action="../includes/register.inc.php" method="POST" autocomplete="false">
             <input type="text" name="username" placeholder="username">
             <input type="password" name="password" placeholder="password" autocomplete="new-password">
             <input type="password" name="veirfy-password" placeholder="veirfy-password" autocomplete="new-password">
