@@ -10,7 +10,7 @@
 ?>
 
 <div class="Admin-Wrapper">
-    <form action="includes/admin.inc.php" method="post" class="Admin-Content" enctype="multipart/form-data">
+    <form action="includes/admin.inc.php" method="post" class="Admin-Content" enctype="multipart/form-data" autocomplete="off">
         <div class="leftSide">
             <img src="/images/NoImage.jpg" id="imageOnChange" alt="">
             <input type="file" name="image" id="file" onchange="loadFile(event)">
@@ -22,9 +22,10 @@
             <input type="text" name="Price" placeholder="Price">
             <input type="text" name="Quantity" placeholder="Quantity">
             <select name="Category">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Kids">Kids</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                    </select> 
             <textarea name="Description" placeholder="Description" cols="30" rows="10"></textarea>
             <input type="submit" name="AddProduct" value="Add Product" placeholder="Quantity">
         </div>

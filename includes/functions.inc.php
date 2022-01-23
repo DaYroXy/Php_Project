@@ -235,7 +235,7 @@ function UpdateProduct($pdo, $product) {
     $stmt->bindParam(3, $product["image"], PDO::PARAM_STR);
     $stmt->bindParam(4, $product["price"], PDO::PARAM_STR);
     $stmt->bindParam(5, $product["quantity"], PDO::PARAM_STR);
-    $stmt->bindParam(6, $product["category"], PDO::PARAM_INT);
+    $stmt->bindParam(6, $product["category"], PDO::PARAM_STR);
     $stmt->bindParam(7, $product["id"], PDO::PARAM_STR);
     $status = $stmt->execute();
 
@@ -283,7 +283,7 @@ function AddProductToDB($pdo, $product) {
     $stmt->bindParam(3, $product["image"], PDO::PARAM_STR);
     $stmt->bindParam(4, $product["price"], PDO::PARAM_STR);
     $stmt->bindParam(5, $product["quantity"], PDO::PARAM_STR);
-    $stmt->bindParam(6, $product["category"], PDO::PARAM_INT);
+    $stmt->bindParam(6, $product["category"], PDO::PARAM_STR);
     $status = $stmt->execute();
 
     if(!$status) {

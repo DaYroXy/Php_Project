@@ -45,8 +45,8 @@
                </div>
                <div class="column">
                     <select name="Category">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
                         <option value="Kids">Kids</option>
                     </select>               
                 </div>

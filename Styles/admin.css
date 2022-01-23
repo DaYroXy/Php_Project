@@ -94,3 +94,20 @@ option {
     left: 0;
     position: absolute;
 }
+
+@media (max-width: 850px) {
+    .Admin-Content {
+        margin-top: auto 45px;
+        max-width: 500px;
+        flex-direction: column;
+    }
+
+    .RightSide {
+        width: 100%;
+    }
+
+    .leftSide img {
+        width: 100%;
+        max-height: 450px;
+    }
+}
