@@ -18,7 +18,6 @@
     box-shadow: 0 0px 25px 0 #25272B;
     background: #25272B;
     width: 350px;
-    height: 350px;
     text-align: center;
     padding: 15px;
 }
@@ -72,4 +71,19 @@
 
 .login-form a {
     font-size: 14px;
+}
+
+.rememberMe {
+    margin-top: -15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.rememberMe p {
+    margin: auto;
+}
+
+.rememberMe input {
 }

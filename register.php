@@ -6,12 +6,17 @@
     <div class="register-form">
         <h1>REGISTER</h1>
         
-        <form action="../includes/register.inc.php" method="POST" autocomplete="false">
+        <form action="../includes/register.inc.php" method="POST" autocomplete="off">
             <input type="text" name="username" placeholder="username">
             <input type="password" name="password" placeholder="password" autocomplete="new-password">
             <input type="password" name="veirfy-password" placeholder="veirfy-password" autocomplete="new-password">
             <input type="submit" name="Register" value="Register">
-            <p>already have an account?<a href="login.php"> login now</a></p>
+            <?php
+                if(isset($_GET["error"])) {
+                    echo  '<p style="color:red;">'.$_GET["error"].'</p>';
+                }
+            ?>
+            <p style="margin-bottom: 15px;">already have an account?<a href="login.php"> login now</a></p>
         </form>
     </div>
 

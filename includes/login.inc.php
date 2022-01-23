@@ -26,8 +26,9 @@ require_once "db-connection.php";
 // get register function
 require_once "functions.inc.php";
 
+
 // check if user exists function from functions.inc.php
-LoginUser($username, $password, $pdo);
+LoginUser($username, $password, $pdo, isset($_POST["remember"]));
 
 
 ?>

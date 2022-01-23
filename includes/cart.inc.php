@@ -3,7 +3,7 @@
 session_start();
 
 // Check if method is post and was clicked on register button
-if($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST["ProductId"])) {
+if($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     if($_SESSION["user"]) {
         die(header("location: ../shop.php"));
@@ -13,6 +13,9 @@ if($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST["ProductId"])) {
 
 } 
 
+$userid = $_SESSION["user"]["id"];
+
+
 // database connection
 require_once "db-connection.php";
 
@@ -20,8 +23,36 @@ require_once "db-connection.php";
 require_once "functions.inc.php";
 
 
+if(isset($_POST["purchase"])) {
+    $productsInCart = GetCart($pdo, $userid);
+
+    if(empty($productsInCart)) {
+        die(header("location: ../cart?error=cart is empty"));
+    }
+
+    foreach($productsInCart as &$cartProduct) {
+        print_r($cartProduct);
+        $product = GetProductById($pdo, $cartProduct["productid"]);
+
+        if(($product["quantity"] - $cartProduct["quantity"]) < 0) {
+            die(header("location: ../cart.php?error=We dont have enough items."));
+        } else {
+            PurchaseItem($pdo, $cartProduct["productid"], $cartProduct["quantity"], $userid);
+        }
+    }
+    die(header("location: ../cart.php?thank you for buying"));
+}
+
+
+if(!isset($_POST["ProductId"])) {
+    if($_SESSION["user"]) {
+        die(header("location: ../shop.php"));
+    } else{
+        die(header("location: ../login.php"));
+    }
+}
+
 $productId = $_POST["ProductId"];
-$userid = $_SESSION["user"]["id"];
 
 if(isset($_POST["AddToCart"])) {
     AddProductToCart($pdo, $userid, $productId, "shop");
@@ -29,6 +60,7 @@ if(isset($_POST["AddToCart"])) {
 
 if(isset($_POST["RemoveFromCart"])) {
     RemoveFromCart($pdo, $productId, $userid);
+    die(header("location: ../cart.php?removed sucess"));
 }
 
 if(isset($_POST["increaseQuantity"])) {
@@ -38,8 +70,6 @@ if(isset($_POST["increaseQuantity"])) {
 if(isset($_POST["decreaseQuantity"])) {
     DecreaseProductFromCart($pdo, $userid, $productId);
 }
-
-
 
 
 

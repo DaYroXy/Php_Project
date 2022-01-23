@@ -13,11 +13,11 @@ function CreateUser($username, $password, $admin, $pdo) {
     }
 
     // Login user automaticlly after signup
-    LoginUser($username, $password, $pdo);
+    LoginUser($username, $password, $pdo, true);
 }
 
 
-function LoginUser($username, $password, $pdo) {
+function LoginUser($username, $password, $pdo, $remember) {
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username=?");
     $stmt->bindParam(1, $username, PDO::PARAM_STR);
     $status = $stmt->execute();
@@ -36,10 +36,25 @@ function LoginUser($username, $password, $pdo) {
 
         session_start();
         $_SESSION["user"] = $user;
-        header("location: ../index.php");
+
+        if(!$remember) {
+            setcookie("username", $username, time()+36500, '/');
+            setcookie("password", $password, time()+36500, '/');
+            setcookie("remember", "on", time()+36500, '/');
+        } else {
+            setcookie("username", $username, time()-3600, '/');
+            setcookie("password", $password, time()-3600, '/');
+            setcookie("remember", "on", time()-3600, '/');
+        }
+
+        if($user["admin"] > 0) {
+            header("location: ../admin.php");
+        } else {
+            header("location: ../index.php");
+        }
 
     }else {
-        die(header("location:../login.php?error=incorrectUP"));
+        die(header("location:../login.php?error=incorrect username/password"));
     }
 
     $pdo = null;
@@ -163,8 +178,6 @@ function RemoveFromCart($pdo, $productId, $userid) {
     }
 
     $pdo = null;
-
-    die(header("location: ../cart.php?removed sucess"));
 
 }
 
@@ -303,10 +316,23 @@ function CheckEmptyKeyValue($array, $skip) {
             }
         }
     }
-
     return false;
 }
 
+
+function PurchaseItem($pdo, $productId, $amount, $userid) {
+    $stmt = $pdo->prepare("UPDATE products SET quantity = quantity - ? WHERE id=?");
+    $stmt->bindParam(1, $amount, PDO::PARAM_STR);
+    $stmt->bindParam(2, $productId, PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    RemoveFromCart($pdo, $productId, $userid);
+    $pdo = null;
+}
 
 
 ?>

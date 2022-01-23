@@ -68,9 +68,9 @@
                     <p>Total</p>
                     <h4>$<?php if(isset($user)) echo  number_format($CartPrices["total"],2); else echo 0; ?></h4>
                 </div>
-                <form action="#">
+                <form action="includes/cart.inc.php" method="POST">
                     <input type="text" name="promoCode" placeholder="have a promo code?">
-                    <input type="submit" name="purchase" value="PROCEED TO CHECKOUT" id="">
+                    <input type="submit" name="purchase" value="PROCEED TO CHECKOUT">
                 </form>
             </div>
         </div>
