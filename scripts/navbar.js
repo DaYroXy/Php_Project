@@ -40,3 +40,18 @@ window.addEventListener('click', function(e){
         }
     }
 });
+
+
+
+
+function changeImage(event) {
+    console.log(URL.createObjectURL(event.value));
+    // console.log(URL.createObjectURL(event.target));
+    // document.getElementById("imageOnChange").src
+    // console.log(event.value);
+}
+
+var loadFile = function(event) {
+	var image = document.getElementById('imageOnChange');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};

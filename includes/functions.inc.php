@@ -36,7 +36,6 @@ function LoginUser($username, $password, $pdo) {
 
         session_start();
         $_SESSION["user"] = $user;
-        $_SESSION["cart"] = GetCart($pdo, $user["id"]);
         header("location: ../index.php");
 
     }else {
@@ -66,8 +65,19 @@ function GetProducts($pdo) {
     return $products;
 }
 
+function GetProductById($pdo, $productId) {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE id=?");
+    $stmt->bindParam(1, $productId, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $products = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $pdo = null;
+    return $products;
+}
+
 function GetProductsByCategory($pdo, $category) {
-    $stmt = $pdo->prepare("SELECT * from products WHERE category=?");
+    $stmt = $pdo->prepare("SELECT * from products WHERE category=? ORDER BY id desc");
     $stmt->bindParam(1, $category, PDO::PARAM_STR);
     $stmt->execute();
 
@@ -95,11 +105,12 @@ function GetCart($pdo, $userid) {
     $userCart = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $pdo = null;
+
     return $userCart;
 }
 
-function AddProductToCart($pdo, $userId, $productId) {
-    $currentCart = GetCart($pdo, $userId);
+function AddProductToCart($pdo, $userid, $productId, $location) {
+    $currentCart = GetCart($pdo, $userid);
 
     $found = false;
     foreach($currentCart as &$product) {
@@ -111,7 +122,7 @@ function AddProductToCart($pdo, $userId, $productId) {
 
     if($found) {
         $stmt = $pdo->prepare("UPDATE CART SET quantity = quantity + 1 WHERE userid=? AND productid=?");
-        $stmt->bindParam(1, $userId, PDO::PARAM_STR);
+        $stmt->bindParam(1, $userid, PDO::PARAM_STR);
         $stmt->bindParam(2, $productId, PDO::PARAM_STR);
         $status = $stmt->execute();
 
@@ -123,7 +134,7 @@ function AddProductToCart($pdo, $userId, $productId) {
         
         $quantity = 1;
         $stmt = $pdo->prepare("INSERT INTO CART(userid, productid, quantity) VALUES(?,?,?)");
-        $stmt->bindParam(1, $userId, PDO::PARAM_STR);
+        $stmt->bindParam(1, $userid, PDO::PARAM_STR);
         $stmt->bindParam(2, $productId, PDO::PARAM_STR);
         $stmt->bindParam(3, $quantity, PDO::PARAM_STR);
         $status = $stmt->execute();
@@ -134,10 +145,168 @@ function AddProductToCart($pdo, $userId, $productId) {
 
     }
 
-    $_SESSION['cart'] = GetCart($pdo, $userId);
     $pdo = null;
+
+    die(header("location: ../$location.php"));
+}
+
+
+function RemoveFromCart($pdo, $productId, $userid) {
+
+    $stmt = $pdo->prepare("DELETE FROM cart WHERE userid=? AND productid=?");
+    $stmt->bindParam(1, $userid, PDO::PARAM_STR);
+    $stmt->bindParam(2, $productId, PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    $pdo = null;
+
+    die(header("location: ../cart.php?removed sucess"));
+
+}
+
+
+function DecreaseProductFromCart($pdo, $userid, $productId) {
+    $product = GetProductById($pdo, $productId);
+
+    $stmt = $pdo->prepare("SELECT * FROM cart WHERE userid=? AND productid =?");
+    $stmt->bindParam(1, $userid, PDO::PARAM_INT);
+    $stmt->bindParam(2, $productId, PDO::PARAM_INT);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    $inCart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    if($inCart["quantity"] > 1) {
+        $stmt = $pdo->prepare("UPDATE CART SET quantity = quantity - 1 WHERE userid=? AND productid=?");
+        $stmt->bindParam(1, $userid, PDO::PARAM_INT);
+        $stmt->bindParam(2, $productId, PDO::PARAM_INT);
+        $status = $stmt->execute();
+    
+        if(!$status) {
+            die($stmt->errorCode());
+        }
+    
+        $pdo = null;
+    } else {
+        RemoveFromCart($pdo, $productId, $userid);
+    }
+
+
 
     die(header("location: ../cart.php"));
 }
+
+
+function CalculateCartPrices($pdo, $cart) {
+
+    
+    $ItemsPrices = 0;
+    foreach($cart as &$product) {
+        $prod = GetProductById($pdo, $product["productid"]);
+        $ItemsPrices += $prod["price"] * $product["quantity"];
+    }
+
+    $Shipping = (($ItemsPrices * 8) / 100);
+    $Total = $ItemsPrices + $Shipping;
+
+    $CartPrice = array(
+        "items" => $ItemsPrices,
+        "shipping" => $Shipping,
+        "total" => $Total
+    );
+    $pdo = null;
+    return $CartPrice;
+}
+
+function UpdateProduct($pdo, $product) {
+
+    print_r($product);
+    $stmt = $pdo->prepare("UPDATE products SET name=?, description=?, image=?, price=?, quantity=?, category=? WHERE id=?");
+    $stmt->bindParam(1, $product["name"], PDO::PARAM_STR);
+    $stmt->bindParam(2, $product["description"], PDO::PARAM_STR);
+    $stmt->bindParam(3, $product["image"], PDO::PARAM_STR);
+    $stmt->bindParam(4, $product["price"], PDO::PARAM_STR);
+    $stmt->bindParam(5, $product["quantity"], PDO::PARAM_STR);
+    $stmt->bindParam(6, $product["category"], PDO::PARAM_INT);
+    $stmt->bindParam(7, $product["id"], PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    $pdo = null;
+
+    die(header("location: ../index.php"));
+}
+
+function RemoveProductFromDB($pdo, $productId) {
+
+    $stmt = $pdo->prepare("DELETE FROM cart WHERE productid=?");
+    $stmt->bindParam(1, $productId, PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+
+    $stmt = $pdo->prepare("DELETE FROM products WHERE id=?");
+    $stmt->bindParam(1, $productId, PDO::PARAM_STR);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    $pdo = null;
+
+    die(header("location: ../admin.php?removed sucess"));
+
+}
+
+function AddProductToDB($pdo, $product) {
+
+    print_r($product);
+
+    $stmt = $pdo->prepare("INSERT INTO products(name,description,image,price,quantity,category) VALUES(?,?,?,?,?,?)");
+    $stmt->bindParam(1, $product["name"], PDO::PARAM_STR);
+    $stmt->bindParam(2, $product["description"], PDO::PARAM_STR);
+    $stmt->bindParam(3, $product["image"], PDO::PARAM_STR);
+    $stmt->bindParam(4, $product["price"], PDO::PARAM_STR);
+    $stmt->bindParam(5, $product["quantity"], PDO::PARAM_STR);
+    $stmt->bindParam(6, $product["category"], PDO::PARAM_INT);
+    $status = $stmt->execute();
+
+    if(!$status) {
+        die($stmt->errorCode());
+    }
+
+    $pdo = null;
+
+    die(header("location: ../admin.php?success=Product Added"));
+}
+
+function CheckEmptyKeyValue($array, $skip) {
+    foreach ($array as $key => $value) {
+        if($skip != $key) {
+            if(empty($value)) {
+                return $key;
+            }
+        }
+    }
+
+    return false;
+}
+
+
 
 ?>

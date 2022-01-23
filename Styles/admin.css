@@ -1,0 +1,96 @@
+
+
+
+.Admin-Wrapper {
+    margin: auto;
+    width: 85%;
+    margin-bottom: 35px;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Admin-Content {
+    background-color: #25272bdb;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.RightSide {
+    width: 50%;
+    display: flex;
+    gap: 15px;
+    flex-direction:column;
+}
+
+.leftSide {
+    position: relative;
+}
+
+.leftSide img {
+    width: 390px;
+    height: 450px;
+    max-width: 390px;
+    max-height: 450px;
+    object-fit:cover;
+}
+
+
+.Admin-Content input, select {
+    outline: none;
+    padding: 10px;
+    resize: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #e1e1e1;
+    color: #FFF;
+}
+
+option {
+    background: #4F5159;
+}
+
+.Admin-Content textarea {
+    outline: none;
+    padding: 0 10px 10px;
+    resize: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #e1e1e1;
+    color: #FFF;
+}
+
+.Admin-Content input[type="submit"] {
+    background: red;
+    border-radius: 5px;
+    width: 30%;
+    margin-left: auto;
+    border-bottom: none;
+}
+
+.leftSide input[type="file"]{
+    display: none;
+}
+
+.leftSide label:hover {
+    background-image: url('../images/pen.png');
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #00000072;
+    cursor: pointer;
+}
+
+.leftSide label{
+    width: 100%;
+    height: 99.5%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
