@@ -40,7 +40,7 @@ if(isset($_POST["purchase"])) {
             PurchaseItem($pdo, $cartProduct["productid"], $cartProduct["quantity"], $userid);
         }
     }
-    die(header("location: ../cart.php?sucess=thank you for buying"));
+    die(header("location: ../cart.php?success=thank you for buying"));
 }
 
 
@@ -72,7 +72,7 @@ if(isset($_POST["AddToCart"])) {
 
 if(isset($_POST["RemoveFromCart"])) {
     RemoveFromCart($pdo, $productId, $userid);
-    die(header("location: ../cart.php?sucess=item removed sucessfully"));
+    die(header("location: ../cart.php?success=item removed successfully"));
 }
 
 if(isset($_POST["increaseQuantity"])) {

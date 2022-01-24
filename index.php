@@ -19,10 +19,10 @@
     </div>
 <?php } ?>
 
-<?php if(isset($_GET["sucess"])) { ?>
+<?php if(isset($_GET["success"])) { ?>
     <div class="AlertMessage">
-        <div class="alert alertSucess">
-            <?php echo  '<p">'.$_GET["sucess"].'</p>'; ?>
+        <div class="alert alertsuccess">
+            <?php echo  '<p">'.$_GET["success"].'</p>'; ?>
         </div>
     </div>
 <?php } ?>
@@ -119,7 +119,7 @@ if(isset($_GET["continue"])) {
     <div class="items-list">
 
         <?php
-            $products = GetPopular($pdo);
+            $products = array_reverse(GetPopular($pdo));
 
             foreach($products as &$product) { ?>
             
@@ -136,26 +136,29 @@ if(isset($_GET["continue"])) {
                     <div class="product-inner-info">
                         <h4><?php echo $product["name"]; ?></h4>
                         <p><?php echo $product["description"]; ?></p>
-                        <div class="price-buy">
-                            <h2>$<?php echo $product["price"]; ?></h2>
+                        <?php if($product["quantity"] > 0) {
+                            echo '<div class="price-buy">';
+                        } else {
+                            echo '<div style="margin-top:15px">';
+                        } ?>
+                            <h2><?php if($product["quantity"] > 0) {echo "$" . $product["price"];} else { echo "OUT OF STUCK";} ?></h2>
                             <?php if(isset($user)) {
                                 echo '<form action="includes/cart.inc.php" method="post">';
                             } else {
                                 echo '<form action="login.php">';
                             } ?>
-                                <input type="submit" name="AddToCart" value="Add to cart">
-                                <input type="hidden" name="ProductId" value="<?php echo $product['id']; ?>">
-                                <input type="hidden" name="location" value="index">
+                            <?php if($product["quantity"] > 0) echo  '<input type="submit" name="AddToCart" value="Add to cart">';  ?>
+                                <input type="hidden" name="ProductId" value="<?php echo $product['id']; ?>"></input>
                                 <input type="hidden" name="continue" value=<?php 
-                                    if(isset($_GET["continue"])) { 
-                                        if($_GET["continue"]==="continue") {
-                                        echo 1 ;
-                                        } else {
-                                            echo 1;
-                                        }
-                                    } else{
-                                        echo 0;
-                                    } ?>>
+                                if(isset($_GET["continue"])) { 
+                                    if($_GET["continue"]==="continue") {
+                                    echo 1 ;
+                                    } else {
+                                        echo 1;
+                                    }
+                                } else{
+                                    echo 0;
+                                } ?>>
                             </form>
                         </div>
                     </div>

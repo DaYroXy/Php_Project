@@ -274,6 +274,7 @@ input[type="submit"]:hover {
 
 
 .AlertMessage {
+    z-index: 15;
     margin-top: 25px;
     max-width: 400px;
     width: 100%;
@@ -292,7 +293,7 @@ input[type="submit"]:hover {
     text-align: center;
 }
 
-.alertSucess {
+.alertsuccess {
     background-color: #04AA6D;    
 }
 

@@ -95,14 +95,15 @@ option {
     position: absolute;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 990px) {
     .Admin-Content {
-        margin-top: auto 45px;
+        margin: 45px auto;
         max-width: 500px;
         flex-direction: column;
     }
 
     .RightSide {
+        margin-top: 25px;
         width: 100%;
     }
 

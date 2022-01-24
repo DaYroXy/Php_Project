@@ -103,7 +103,7 @@ function GetProductsByCategory($pdo, $category) {
 }
 
 function GetPopular($pdo) {
-    $stmt = $pdo->prepare("SELECT * FROM products ORDER BY quantity desc LIMIT 6");
+    $stmt = $pdo->prepare("SELECT * FROM products ORDER BY price desc LIMIT 8");
     $stmt->execute();
 
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -289,7 +289,7 @@ function RemoveProductFromDB($pdo, $productId) {
 
     $pdo = null;
 
-    die(header("location: ../admin.php?removed sucess"));
+    die(header("location: ../admin.php?sucess=removed sucessfully"));
 
 }
 
@@ -312,7 +312,7 @@ function AddProductToDB($pdo, $product) {
 
     $pdo = null;
 
-    die(header("location: ../admin.php?success=Product Added"));
+    die(header("location: ../admin.php?success=Product added sucessfully"));
 }
 
 function CheckEmptyKeyValue($array, $skip) {

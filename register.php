@@ -9,10 +9,10 @@
     </div>
 <?php } ?>
 
-<?php if(isset($_GET["sucess"])) { ?>
+<?php if(isset($_GET["success"])) { ?>
     <div class="AlertMessage">
-        <div class="alert alertSucess">
-            <?php echo  '<p">'.$_GET["sucess"].'</p>'; ?>
+        <div class="alert alertsuccess">
+            <?php echo  '<p">'.$_GET["success"].'</p>'; ?>
         </div>
     </div>
 <?php } ?>
