@@ -27,7 +27,7 @@ if(isset($_POST["purchase"])) {
     $productsInCart = GetCart($pdo, $userid);
 
     if(empty($productsInCart)) {
-        die(header("location: ../cart?error=cart is empty"));
+        die(header("location: ../cart.php?error=cart is empty"));
     }
 
     foreach($productsInCart as &$cartProduct) {
@@ -40,7 +40,7 @@ if(isset($_POST["purchase"])) {
             PurchaseItem($pdo, $cartProduct["productid"], $cartProduct["quantity"], $userid);
         }
     }
-    die(header("location: ../cart.php?thank you for buying"));
+    die(header("location: ../cart.php?sucess=thank you for buying"));
 }
 
 
@@ -55,16 +55,28 @@ if(!isset($_POST["ProductId"])) {
 $productId = $_POST["ProductId"];
 
 if(isset($_POST["AddToCart"])) {
-    AddProductToCart($pdo, $userid, $productId, "shop");
+
+    if(!isset($_POST["continue"])) {
+       die(header("location: ../cart")); 
+    }
+
+
+    $continue = $_POST["continue"];
+
+    if(isset($_POST["location"])) {
+        AddProductToCart($pdo, $userid, $productId, "index", $continue);
+    } else {
+        AddProductToCart($pdo, $userid, $productId, "shop", $continue);
+    }
 }
 
 if(isset($_POST["RemoveFromCart"])) {
     RemoveFromCart($pdo, $productId, $userid);
-    die(header("location: ../cart.php?removed sucess"));
+    die(header("location: ../cart.php?sucess=item removed sucessfully"));
 }
 
 if(isset($_POST["increaseQuantity"])) {
-    AddProductToCart($pdo, $userid, $productId, "cart");
+    AddProductToCart($pdo, $userid, $productId, "cart", false);
 }
 
 if(isset($_POST["decreaseQuantity"])) {

@@ -39,9 +39,6 @@ if(isset($_POST["Update"])) {
         "quantity" => $_POST["Quantity"],
         "category" => $_POST["Category"]
     );
-    // if($error = CheckEmptyKeyValue($product, "image")) {
-    //     die(header("location: ../index.php?error=$error"));
-    // }
 
     print_r($product);
     UpdateProduct($pdo, $product);

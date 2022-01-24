@@ -1,6 +1,24 @@
 <?php $selected="login"; require_once "helper/navbar.php" ?>
 
 
+
+<?php if(isset($_GET["error"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertError">
+            <?php echo  '<p">'.$_GET["error"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if(isset($_GET["sucess"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertSucess">
+            <?php echo  '<p">'.$_GET["sucess"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
+
 <div class="login-wrapper">
     
     <div class="login-form">
@@ -14,11 +32,7 @@
                 <p>Remember me ?</p>
                 <input type="checkbox" name="remember">
             </div>
-            <?php
-            if(isset($_GET["error"])) {
-                echo  '<p style="color:red;">'.$_GET["error"].'</p>';
-            }
-            ?>
+
             <p style="margin-bottom: 15px;">dont have an account?<a href="register.php"> create one now!</a></p>
         </form>
     </div>

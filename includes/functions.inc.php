@@ -124,7 +124,7 @@ function GetCart($pdo, $userid) {
     return $userCart;
 }
 
-function AddProductToCart($pdo, $userid, $productId, $location) {
+function AddProductToCart($pdo, $userid, $productId, $location, $continueShopping) {
     $currentCart = GetCart($pdo, $userid);
 
     $found = false;
@@ -161,8 +161,15 @@ function AddProductToCart($pdo, $userid, $productId, $location) {
     }
 
     $pdo = null;
+    echo $continueShopping;
+    if($continueShopping == 0){
+        die(header("location: ../$location.php?cart=product added successfully&continue=suggestion"));
+    } else if($continueShopping == 1) {
+        die(header("location: ../$location.php?cart=product added successfully&continue=continue"));
+    } else {
+        die(header("location: ../$location.php?cart=product added successfully"));
 
-    die(header("location: ../$location.php"));
+    }
 }
 
 

@@ -106,6 +106,7 @@
 .item-info {
     position: relative;
     max-width: 250px;
+    width: 100%;
 }
 
 .item-info h4 {

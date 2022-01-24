@@ -1,6 +1,22 @@
 <?php $selected="contact"; require_once "helper/navbar.php" ?>
 
 
+<?php if(isset($_GET["error"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertError">
+            <?php echo  '<p">'.$_GET["error"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if(isset($_GET["sucess"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertSucess">
+            <?php echo  '<p">'.$_GET["sucess"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
 <div class="content-wrapper">
     <div class="contents">
         <div class="title">

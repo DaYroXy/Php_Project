@@ -2,6 +2,22 @@
 
 
 
+<?php if(isset($_GET["error"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertError">
+            <?php echo  '<p">'.$_GET["error"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
+<?php if(isset($_GET["sucess"])) { ?>
+    <div class="AlertMessage">
+        <div class="alert alertSucess">
+            <?php echo  '<p">'.$_GET["sucess"].'</p>'; ?>
+        </div>
+    </div>
+<?php } ?>
+
 <div class="content-wrapper">
     <div class="category-nav">
         <ul>
@@ -12,6 +28,20 @@
         </ul>
     </div>
 </div>
+
+<?php
+if(isset($_GET["continue"])) {
+    if($_GET["continue"]==="suggestion") { ?>
+
+<div class="Continue" id="Continue">
+    <p>Product has been added to your cart</p>
+    <div class="buttons">
+        <button onclick="document.getElementById('Continue').style = 'display: none;'" id="ContinueButton">Continue Shopping</button>
+        <button onclick="location.href = 'cart.php'" >Go to Cart</button>
+    </div>
+</div>
+
+<?php } } ?>
 
 
 
@@ -96,6 +126,16 @@
                             } ?>
                                 <input type="submit" name="AddToCart" value="Add to cart"></input>
                                 <input type="hidden" name="ProductId" value="<?php echo $product['id']; ?>"></input>
+                                <input type="hidden" name="continue" value=<?php 
+                                if(isset($_GET["continue"])) { 
+                                    if($_GET["continue"]==="continue") {
+                                    echo 1 ;
+                                    } else {
+                                        echo 1;
+                                    }
+                                } else{
+                                    echo 0;
+                                } ?>>
                             </form>
                         </div>
                     </div>

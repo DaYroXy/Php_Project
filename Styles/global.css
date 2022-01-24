@@ -265,13 +265,84 @@ input[type="submit"]:hover {
 }
 
 .LeftSection label{
-    width: 100%;
-    height: 100%;
+    width: 350px;
+    height: 430px;
     top: 0;
     left: 0;
     position: absolute;
 }
 
+
+.AlertMessage {
+    margin-top: 25px;
+    max-width: 400px;
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeOutAlert 0.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay:2s;
+    
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.alertSucess {
+    background-color: #04AA6D;    
+}
+
+.alertError {
+    background-color: #f44336;
+}
+
+.Continue {
+    position: fixed;
+    z-index: 5;
+    right: 0;
+    background-color: #33323A;
+    width: 100%;
+    max-width: 500px;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.Continue button{
+    padding: 10px;
+    border: none;
+    background: #f44336;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+#ContinueButton {
+    background: #04AA6D;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  @keyframes fadeOutAlert{
+      from {opacity: 1;}
+      to {opacity: 0;}
+  }
 
 
 @media (max-width: 1331px) {
@@ -289,6 +360,14 @@ input[type="submit"]:hover {
 @media (max-width: 650px) {
     .items-list {
         grid-template-columns: repeat(1, 300px);
+    }
+
+    .Continue {
+        flex-direction: column;
+        max-width: 250px;
+        gap: 15px;
+        left: 50%;
+        transform: translate(-50%);
     }
 }
 
@@ -320,4 +399,13 @@ input[type="submit"]:hover {
         display: none;
     } 
 
+    .item-info {
+        margin-bottom: 25px;
+    }
+
+    .item-info h4{
+        width: 100%;
+        /* width: 100%; */
+        margin-bottom: auto;
+    }
 }
